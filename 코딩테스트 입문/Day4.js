@@ -80,7 +80,6 @@ function test3(slice, n) {
 // 제한사항
 // 0 ≤ numbers의 원소 ≤ 1,000
 // 1 ≤ numbers의 길이 ≤ 100
-// 정답의 소수 부분이 .0 또는 .5인 경우만 입력으로 주어집니다.
 
 function test4(numbers) {
   var answer = 0;
