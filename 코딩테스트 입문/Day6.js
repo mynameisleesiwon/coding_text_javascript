@@ -1,4 +1,4 @@
-// 1. 문자열 뒤집기
+// 1. 문자열 뒤집기 ❗
 
 // 문제 설명
 // 문자열 my_string이 매개변수로 주어집니다. my_string을 거꾸로 뒤집은 문자열을 return하도록 solution 함수를 완성해주세요.
@@ -15,7 +15,7 @@ function test1(my_string) {
   // return my_string.split("").reverse().join("");
 }
 
-// 2. 짝수 홀수 개수
+// 2. 짝수 홀수 개수 ❗
 
 // 문제 설명
 // 정수가 담긴 리스트 num_list가 주어질 때, num_list의 원소 중 짝수와 홀수의 개수를 담은 배열을 return 하도록 solution 함수를 완성해보세요.
@@ -29,7 +29,7 @@ function test2(num_list) {
   return [evenCount, oddCount];
 }
 
-// 3. 문자 반복 출력하기
+// 3. 문자 반복 출력하기 ❗
 
 // 문제 설명
 // 문자열 my_string과 정수 n이 매개변수로 주어질 때, my_string에 들어있는 각 문자를 n만큼 반복한 문자열을 return 하도록 solution 함수를 완성해보세요.
