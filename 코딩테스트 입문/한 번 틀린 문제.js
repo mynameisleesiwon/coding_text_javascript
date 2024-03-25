@@ -50,3 +50,51 @@ function test2(array) {
   let middleNum = Math.floor(array.length / 2);
   return array.sort((a, b) => a - b)[middleNum];
 }
+
+// 3. 최빈값 구하기 ⭕
+
+// 문제 설명
+// 최빈값은 주어진 값 중에서 가장 자주 나오는 값을 의미합니다.
+// 정수 배열 array가 매개변수로 주어질 때,
+// 최빈값을 return 하도록 solution 함수를 완성해보세요. 최빈값이 여러 개면 -1을 return 합니다.
+
+// 제한사항
+// 0 < array의 길이 < 100
+// 0 ≤ array의 원소 < 1000
+
+function test3(array) {
+  let newArray = []; // 중복을 제거한 값들을 저장할 배열
+  let mode = 0; // 최빈값을 저장할 변수
+  let count = 0; // 현재 숫자의 빈도수를 세기 위한 카운터
+  let modeCount = 0; // 최빈값의 빈도수를 저장할 변수
+
+  // 배열에서 중복을 제거하여 newArray를 생성
+  for (let i = 0; i < array.length; i++) {
+    if (!newArray.includes(array[i])) {
+      newArray.push(array[i]);
+    }
+  }
+
+  // newArray의 각 요소에 대해 원본 배열에서의 빈도수를 계산
+  for (let i = 0; i < newArray.length; i++) {
+    for (let k = 0; k < array.length; k++) {
+      if (newArray[i] == array[k]) {
+        count += 1; // 현재 요소의 빈도수 증가
+      }
+    }
+
+    // 새로운 최빈값을 찾았을 경우
+    if (count > modeCount) {
+      modeCount = count; // 최빈값의 빈도수 업데이트
+      mode = newArray[i]; // 새로운 최빈값 저장
+    }
+    // 현재 최빈값과 동일한 빈도수의 다른 값이 있을 경우
+    else if (count == modeCount) {
+      mode = -1; // 최빈값이 여러 개임을 표시하기 위해 -1로 설정
+    }
+    count = 0; // 다음 요소의 빈도수 계산을 위해 카운터 초기화
+  }
+
+  // 최종적으로 결정된 최빈값 반환
+  return mode;
+}
