@@ -67,5 +67,5 @@ function test4(num_list) {
   }
 
   return answer;
-  // return num_list.slice().reverse();
+  // return num_list.reverse();
 }
