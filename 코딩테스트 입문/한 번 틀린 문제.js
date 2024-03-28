@@ -118,3 +118,26 @@ function test4(n) {
   }
   return answer; // 이미 오름차순으로 정렬된 배열 반환
 }
+
+// 5. 피자 나눠 먹기 (2) ⭕
+
+// 문제 설명
+// 머쓱이네 피자가게는 피자를 여섯 조각으로 잘라 줍니다.
+// 피자를 나눠먹을 사람의 수 n이 매개변수로 주어질 때,
+// n명이 주문한 피자를 남기지 않고 모두 같은 수의 피자 조각을 먹어야 한다면 최소 몇 판을 시켜야 하는지를 return 하도록 solution 함수를 완성해보세요.
+
+// 제한사항
+// 1 ≤ n ≤ 100
+
+function gcd(a, b) {
+  if (a == 0) return b;
+
+  return gcd(b % a, a);
+}
+
+function test5(n) {
+  let gcdValue = gcd(n, 6); // n과 6의 최대공약수를 구함
+  let minPizzas = (n * 6) / gcdValue / 6; // 최소 필요한 피자 판 수 계산
+
+  return minPizzas; // 최소 필요한 피자 판 수 반환
+}
