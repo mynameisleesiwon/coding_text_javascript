@@ -199,3 +199,43 @@ function test7(age) {
   // 모든 숫자를 알파벳으로 변환한 문자열을 반환합니다.
   return answer;
 }
+
+// 8. 진료순서 정하기 ⭕
+
+// 문제 설명
+// 외과의사 머쓱이는 응급실에 온 환자의 응급도를 기준으로 진료 순서를 정하려고 합니다.
+// 정수 배열 emergency가 매개변수로 주어질 때 응급도가 높은 순서대로 진료 순서를 정한 배열을 return하도록 solution 함수를 완성해주세요.
+
+// 제한사항
+// 중복된 원소는 없습니다.
+// 1 ≤ emergency의 길이 ≤ 10
+// 1 ≤ emergency의 원소 ≤ 100
+
+function test8(emergency) {
+  // 새로운 객체를 생성합니다. 이 객체는 각 응급도의 순위를 저장하는 용도로 사용됩니다.
+  let emergencyObject = new Object();
+
+  // emergency 배열의 각 원소에 대해 반복합니다.
+  emergency.forEach((item) => {
+    // 현재 원소의 순위를 나타낼 변수입니다. 초기 순위는 1로 시작합니다.
+    let ranking = 1;
+    // 다시 emergency 배열을 반복하며 현재 원소와 다른 원소들을 비교합니다.
+    for (let i = 0; i < emergency.length; i++) {
+      // 현재 원소가 비교 대상 원소보다 응급도가 낮은 경우,
+      // 즉, 비교 대상 원소의 응급도가 더 높은 경우 순위를 1 증가시킵니다.
+      if (item < emergency[i]) {
+        ranking += 1;
+      }
+    }
+    // 계산된 순위를 emergencyObject 객체에 저장합니다.
+    // 객체의 키로는 원소의 응급도를 사용하고, 값으로는 계산된 순위를 사용합니다.
+    emergencyObject[item] = ranking;
+  });
+
+  // emergency 배열의 각 원소에 대해 emergencyObject에서 해당 원소의 순위를 찾아
+  // 새로운 배열을 생성합니다. 이 배열은 각 원소의 응급도 순위를 담고 있습니다.
+  let answer = emergency.map((item) => (item = emergencyObject[item]));
+
+  // 최종적으로 계산된 순위 배열을 반환합니다.
+  return answer;
+}
