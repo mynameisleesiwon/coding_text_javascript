@@ -151,8 +151,51 @@ function test5(n) {
 // 제한사항
 // 2 ≤ numbers의 길이 ≤ 30
 // 0 ≤ numbers의 원소 ≤ 1,000
-// 0 ≤num1 < num2 < numbers의 길이
+// 0 ≤ num1 < num2 < numbers의 길이
 
 function test6(numbers, num1, num2) {
   return numbers.slice(num1, num2 + 1);
+}
+
+// 7. 외계행성의 나이 ⭕
+
+// 문제 설명
+// 우주여행을 하던 머쓱이는 엔진 고장으로 PROGRAMMERS-962 행성에 불시착하게 됐습니다.
+// 입국심사에서 나이를 말해야 하는데, PROGRAMMERS-962 행성에서는 나이를 알파벳으로 말하고 있습니다.
+// a는 0, b는 1, c는 2, ..., j는 9입니다. 예를 들어 23살은 cd, 51살은 fb로 표현합니다.
+// 나이 age가 매개변수로 주어질 때 PROGRAMMER-962식 나이를 return하도록 solution 함수를 완성해주세요.
+
+// 제한사항
+// age는 자연수입니다.
+// age ≤ 1,000
+// PROGRAMMERS-962 행성은 알파벳 소문자만 사용합니다.
+
+function test7(age) {
+  // PROGRAMMERS-962 행성에서 사용하는 나이 표기법을 객체로 정의합니다.
+  const PROGRAMMERS_AGE = {
+    0: "a",
+    1: "b",
+    2: "c",
+    3: "d",
+    4: "e",
+    5: "f",
+    6: "g",
+    7: "h",
+    8: "i",
+    9: "j",
+  };
+
+  // 최종적으로 반환할 문자열을 담을 변수를 선언합니다.
+  let answer = "";
+  // 주어진 나이를 문자열로 변환한 후, 각 문자를 배열의 요소로 분리합니다.
+  let newArray = age.toString().split("");
+
+  // 분리된 문자 배열을 순회하면서 각 숫자에 해당하는 알파벳으로 변환합니다.
+  newArray.forEach((item) => {
+    // 변환된 알파벳을 answer 문자열에 추가합니다.
+    answer += PROGRAMMERS_AGE[item];
+  });
+
+  // 모든 숫자를 알파벳으로 변환한 문자열을 반환합니다.
+  return answer;
 }
