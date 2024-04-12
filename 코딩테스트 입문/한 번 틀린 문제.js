@@ -356,3 +356,34 @@ function test12(numbers, k) {
 
   return result; // 결과 반환
 }
+
+// 13. 합성수 찾기 ⭕
+
+// 문제 설명
+// 약수의 개수가 세 개 이상인 수를 합성수라고 합니다.
+// 자연수 n이 매개변수로 주어질 때 n이하의 합성수의 개수를 return하도록 solution 함수를 완성해주세요.
+
+// 제한사항
+// 1 ≤ n ≤ 100
+
+function test13(n) {
+  let compositeCount = 0;
+
+  // 1, 2, 3은 합성수가 아니므로, 4부터 시작합니다.
+  for (let i = 4; i <= n; i++) {
+    let divisorNumber = 0; // i의 약수 개수를 저장할 변수
+    for (let k = 1; k <= i; k++) {
+      // 1부터 i까지 모든 수에 대해 반복하여 약수를 찾음
+      if (i % k === 0) {
+        // k가 i의 약수인지 확인
+        divisorNumber++; // 약수라면 카운트 증가
+      }
+    }
+    if (divisorNumber >= 3) {
+      // 약수의 개수가 3개 이상이면 합성수
+      compositeCount++; // 합성수의 개수를 증가
+    }
+  }
+
+  return compositeCount; // 합성수의 총 개수 반환
+}
