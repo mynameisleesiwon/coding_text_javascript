@@ -387,3 +387,37 @@ function test13(n) {
 
   return compositeCount; // 합성수의 총 개수 반환
 }
+
+// 14. 팩토리얼 ⭕
+
+// 문제 설명
+// i팩토리얼 (i!)은 1부터 i까지 정수의 곱을 의미합니다.
+// 예를들어 5! = 5 * 4 * 3 * 2 * 1 = 120 입니다.
+// 정수 n이 주어질 때 다음 조건을 만족하는 가장 큰 정수 i를 return 하도록 solution 함수를 완성해주세요.
+// i! ≤ n
+
+// 제한사항
+// 0 < n ≤ 3,628,800
+
+function test14(n) {
+  let result = 1; // 팩토리얼 계산 결과를 저장할 변수, 초기값 1로 설정
+  let factorialNumber = 0; // 팩토리얼을 계산할 숫자, 초기값 0으로 설정
+
+  // result가 n 이하인 동안 반복
+  while (result <= n) {
+    let factorialResult = 1; // 내부 루프에서 사용할 팩토리얼 결과를 저장할 변수, 매 반복마다 1로 초기화
+    factorialNumber++; // 팩토리얼을 계산할 다음 숫자로 이동
+
+    // factorialNumber부터 1까지 역순으로 곱셈을 수행하여 팩토리얼 계산
+    for (let i = factorialNumber; i > 0; i--) {
+      factorialResult *= i;
+    }
+
+    // 계산된 팩토리얼 결과를 result에 저장
+    result = factorialResult;
+  }
+
+  // while 루프가 종료될 때, factorialNumber는 조건을 만족하지 않는 첫 번째 숫자이므로,
+  // 조건을 만족하는 가장 큰 정수 i를 반환하기 위해 1을 빼줍니다.
+  return factorialNumber - 1;
+}
