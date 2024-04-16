@@ -421,3 +421,47 @@ function test14(n) {
   // 조건을 만족하는 가장 큰 정수 i를 반환하기 위해 1을 빼줍니다.
   return factorialNumber - 1;
 }
+
+// 15. 소인수분해 ⭕
+
+// 문제 설명
+// 소인수분해란 어떤 수를 소수들의 곱으로 표현하는 것입니다.
+// 예를 들어 12를 소인수 분해하면 2 * 2 * 3 으로 나타낼 수 있습니다.
+// 따라서 12의 소인수는 2와 3입니다.
+// 자연수 n이 매개변수로 주어질 때 n의 소인수를 오름차순으로 담은 배열을 return하도록 solution 함수를 완성해주세요.
+
+// 제한사항
+// 2 ≤ n ≤ 10,000
+
+function test15(n) {
+  let primeArray = []; // 소수를 저장할 배열
+  let factorizationArray = []; // 소인수를 저장할 배열
+
+  // 소수 구하는 식
+  for (let i = 2; i <= n; i++) {
+    // 2부터 n까지 모든 수에 대해 반복
+    let count = 0; // 약수의 개수를 세는 변수
+    for (let k = 1; k <= i; k++) {
+      // 1부터 i까지 모든 수에 대해 반복
+      if (i % k === 0) {
+        // i가 k로 나누어떨어지면(약수이면)
+        count++; // 약수의 개수를 증가
+      }
+    }
+    if (count === 2) {
+      // 약수의 개수가 2개이면(1과 자기 자신만이 약수이면)
+      primeArray.push(i); // i는 소수이므로 primeArray에 추가
+    }
+  }
+
+  // 소인수분해 구하는 식
+  primeArray.forEach((item) => {
+    // primeArray에 저장된 모든 소수에 대해 반복
+    if (n % item === 0) {
+      // n이 현재의 소수(item)으로 나누어떨어지면
+      factorizationArray.push(item); // 현재의 소수는 n의 소인수이므로 factorizationArray에 추가
+    }
+  });
+
+  return factorizationArray; // 소인수가 저장된 배열 반환
+}
