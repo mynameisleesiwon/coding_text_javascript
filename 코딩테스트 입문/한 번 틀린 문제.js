@@ -465,3 +465,31 @@ function test15(n) {
 
   return factorizationArray; // 소인수가 저장된 배열 반환
 }
+
+// 16. 대문자와 소문자 ❌
+
+// 문제 설명
+// 문자열 my_string이 매개변수로 주어질 때,
+// 대문자는 소문자로 소문자는 대문자로 변환한 문자열을 return하도록 solution 함수를 완성해주세요.
+
+// 제한사항
+// 1 ≤ my_string의 길이 ≤ 1,000
+// my_string은 영어 대문자와 소문자로만 구성되어 있습니다.
+
+function isUpperCase(string) {
+  // 대문자인지 직접 boolean 값을 반환합니다.
+  return string.toUpperCase() === string;
+}
+
+function solution(my_string) {
+  // 문자열을 배열로 변환합니다.
+  let characters = my_string.split("");
+
+  // 각 문자를 대문자면 소문자로, 소문자면 대문자로 변환합니다.
+  let changedCharacters = characters.map((char) => {
+    return isUpperCase(char) ? char.toLowerCase() : char.toUpperCase();
+  });
+
+  // 변환된 문자 배열을 다시 문자열로 합칩니다.
+  return changedCharacters.join("");
+}
