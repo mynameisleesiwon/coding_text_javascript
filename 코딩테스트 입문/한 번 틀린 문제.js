@@ -565,3 +565,60 @@ function test18(s) {
   // 필터링된 문자들을 사전 순으로 정렬하고 문자열로 합쳐서 반환
   return uniqueChars.sort().join("");
 }
+
+// 19. 문자열 계산하기 ⭕
+
+// 문제 설명
+// my_string은 "3 + 5"처럼 문자열로 된 수식입니다.
+// 문자열 my_string이 매개변수로 주어질 때, 수식을 계산한 값을 return 하는 solution 함수를 완성해주세요.
+
+// 제한사항
+// 연산자는 +, -만 존재합니다.
+// 문자열의 시작과 끝에는 공백이 없습니다.
+// 0으로 시작하는 숫자는 주어지지 않습니다.
+// 잘못된 수식은 주어지지 않습니다.
+// 5 ≤ my_string의 길이 ≤ 100
+// my_string을 계산한 결과값은 1 이상 100,000 이하입니다.
+// my_string의 중간 계산 값은 -100,000 이상 100,000 이하입니다.
+// 계산에 사용하는 숫자는 1 이상 20,000 이하인 자연수입니다.
+// my_string에는 연산자가 적어도 하나 포함되어 있습니다.
+// return type 은 정수형입니다.
+// my_string의 숫자와 연산자는 공백 하나로 구분되어 있습니다.
+
+function test19(my_string) {
+  // 문자열을 공백을 기준으로 분할하여 배열로 변환
+  let myStringToArray = my_string.split(" ");
+  // 결과를 저장할 변수 초기화. 첫 번째 요소를 정수로 변환하여 시작.
+  let result = parseInt(myStringToArray[0]);
+  // 연산자를 저장할 변수 초기화
+  let operator = "";
+
+  // 배열의 모든 요소를 순회
+  for (let i = 0; i < myStringToArray.length; i++) {
+    // 인덱스가 짝수인 경우, 숫자를 처리
+    if (i % 2 === 0) {
+      // 연산자가 '+'인 경우, 현재 숫자를 결과에 더함
+      if (operator === "+") {
+        result += parseInt(myStringToArray[i]);
+      }
+      // 연산자가 '-'인 경우, 현재 숫자를 결과에서 뺌
+      else if (operator === "-") {
+        result -= parseInt(myStringToArray[i]);
+      }
+    }
+    // 인덱스가 홀수인 경우, 연산자를 처리
+    else {
+      // 현재 요소가 '+'인 경우, 연산자를 '+'로 설정
+      if (myStringToArray[i] === "+") {
+        operator = "+";
+      }
+      // 현재 요소가 '-'인 경우, 연산자를 '-'로 설정
+      else if (myStringToArray[i] === "-") {
+        operator = "-";
+      }
+    }
+  }
+
+  // 계산된 결과 반환
+  return result;
+}
